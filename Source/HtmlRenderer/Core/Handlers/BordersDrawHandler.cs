@@ -303,19 +303,14 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// </summary>
         private static RColor GetColor(Border border, CssBoxProperties box, string style)
         {
-            switch (border)
+            return border switch
             {
-                case Border.Top:
-                    return style == CssConstants.Inset ? Darken(box.ActualBorderTopColor) : box.ActualBorderTopColor;
-                case Border.Right:
-                    return style == CssConstants.Outset ? Darken(box.ActualBorderRightColor) : box.ActualBorderRightColor;
-                case Border.Bottom:
-                    return style == CssConstants.Outset ? Darken(box.ActualBorderBottomColor) : box.ActualBorderBottomColor;
-                case Border.Left:
-                    return style == CssConstants.Inset ? Darken(box.ActualBorderLeftColor) : box.ActualBorderLeftColor;
-                default:
-                    throw new ArgumentOutOfRangeException("border");
-            }
+                Border.Top => style == CssConstants.Inset ? Darken(box.ActualBorderTopColor) : box.ActualBorderTopColor,
+                Border.Right => style == CssConstants.Outset ? Darken(box.ActualBorderRightColor) : box.ActualBorderRightColor,
+                Border.Bottom => style == CssConstants.Outset ? Darken(box.ActualBorderBottomColor) : box.ActualBorderBottomColor,
+                Border.Left => style == CssConstants.Inset ? Darken(box.ActualBorderLeftColor) : box.ActualBorderLeftColor,
+                _ => throw new ArgumentOutOfRangeException(nameof(border)),
+            };
         }
 
         /// <summary>
@@ -323,19 +318,14 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// </summary>
         private static double GetWidth(Border border, CssBoxProperties box)
         {
-            switch (border)
+            return border switch
             {
-                case Border.Top:
-                    return box.ActualBorderTopWidth;
-                case Border.Right:
-                    return box.ActualBorderRightWidth;
-                case Border.Bottom:
-                    return box.ActualBorderBottomWidth;
-                case Border.Left:
-                    return box.ActualBorderLeftWidth;
-                default:
-                    throw new ArgumentOutOfRangeException("border");
-            }
+                Border.Top => box.ActualBorderTopWidth,
+                Border.Right => box.ActualBorderRightWidth,
+                Border.Bottom => box.ActualBorderBottomWidth,
+                Border.Left => box.ActualBorderLeftWidth,
+                _ => throw new ArgumentOutOfRangeException(nameof(border)),
+            };
         }
 
         /// <summary>
@@ -343,19 +333,14 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// </summary>
         private static string GetStyle(Border border, CssBoxProperties box)
         {
-            switch (border)
+            return border switch
             {
-                case Border.Top:
-                    return box.BorderTopStyle;
-                case Border.Right:
-                    return box.BorderRightStyle;
-                case Border.Bottom:
-                    return box.BorderBottomStyle;
-                case Border.Left:
-                    return box.BorderLeftStyle;
-                default:
-                    throw new ArgumentOutOfRangeException("border");
-            }
+                Border.Top => box.BorderTopStyle,
+                Border.Right => box.BorderRightStyle,
+                Border.Bottom => box.BorderBottomStyle,
+                Border.Left => box.BorderLeftStyle,
+                _ => throw new ArgumentOutOfRangeException(nameof(border)),
+            };
         }
 
         /// <summary>

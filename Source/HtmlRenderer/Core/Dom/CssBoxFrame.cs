@@ -401,8 +401,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <param name="source">the name of the video source (YouTube/Vimeo/Etc.)</param>
         private void HandleDataLoadFailure(Exception ex, string source)
         {
-            var webError = ex as WebException;
-            var webResponse = webError != null ? webError.Response as HttpWebResponse : null;
+            var webResponse = ex is WebException webError ? webError.Response as HttpWebResponse : null;
             if (webResponse != null && webResponse.StatusCode == HttpStatusCode.NotFound)
             {
                 _videoTitle = "The video is not found, possibly removed by the user.";
@@ -446,7 +445,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             if (_videoImageUrl != null && _imageLoadHandler == null)
             {
                 _imageLoadHandler = new ImageLoadHandler(HtmlContainer, OnLoadImageComplete);
-                _imageLoadHandler.LoadImage(_videoImageUrl, HtmlTag != null ? HtmlTag.Attributes : null);
+                _imageLoadHandler.LoadImage(_videoImageUrl, HtmlTag?.Attributes);
             }
 
             var rects = CommonUtils.GetFirstValueOrDefault(Rectangles);
@@ -545,7 +544,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     new RPoint(left + 2 * size.Width / 3f + 1, top + size.Height / 2f)
                 };
                 g.DrawPolygon(g.GetSolidBrush(RColor.White), points);
-                
+
                 g.ReturnPreviousSmoothingMode(prevMode);
             }
         }

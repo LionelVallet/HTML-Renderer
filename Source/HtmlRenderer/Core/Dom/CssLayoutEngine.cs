@@ -577,7 +577,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <param name="lineBox"></param>
         private static void ApplyJustifyAlignment(RGraphics g, CssLineBox lineBox)
         {
-            if (lineBox.Equals(lineBox.OwnerBox.LineBoxes[lineBox.OwnerBox.LineBoxes.Count - 1]))
+            if (lineBox.Equals(lineBox.OwnerBox.LineBoxes[^1]))
                 return;
 
             double indent = lineBox.Equals(lineBox.OwnerBox.LineBoxes[0]) ? lineBox.OwnerBox.ActualTextIndent : 0f;

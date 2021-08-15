@@ -23,7 +23,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     Represents a new instance of the <see cref="RPoint" /> class with member data left uninitialized.
         /// </summary>
         /// <filterpriority>1</filterpriority>
-        public static readonly RPoint Empty = new RPoint();
+        public static readonly RPoint Empty = new();
 
         private double _x;
         private double _y;

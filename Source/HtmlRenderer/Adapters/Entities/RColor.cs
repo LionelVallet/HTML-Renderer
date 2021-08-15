@@ -18,7 +18,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     Represents a color that is null.
         /// </summary>
         /// <filterpriority>1</filterpriority>
-        public static readonly RColor Empty = new RColor();
+        public static readonly RColor Empty = new();
 
         private readonly long _value;
 
@@ -213,9 +213,8 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <filterpriority>1</filterpriority>
         public override bool Equals(object obj)
         {
-            if (obj is RColor)
+            if (obj is RColor color)
             {
-                var color = (RColor)obj;
                 return _value == color._value;
             }
             return false;

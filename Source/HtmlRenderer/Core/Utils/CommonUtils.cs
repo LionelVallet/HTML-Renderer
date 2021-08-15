@@ -164,7 +164,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// <param name="dic">the dictionary</param>
         /// <param name="defaultValue">optional: the default value to return of no elements found in dictionary </param>
         /// <returns>first element or default value</returns>
-        public static TValue GetFirstValueOrDefault<TKey, TValue>(IDictionary<TKey, TValue> dic, TValue defaultValue = default(TValue))
+        public static TValue GetFirstValueOrDefault<TKey, TValue>(IDictionary<TKey, TValue> dic, TValue defaultValue = default)
         {
             if (dic != null)
             {

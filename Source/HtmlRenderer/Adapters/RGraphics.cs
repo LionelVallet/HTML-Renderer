@@ -34,12 +34,12 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <summary>
         /// The clipping bound stack as clips are pushed/poped to/from the graphics
         /// </summary>
-        protected readonly Stack<RRect> _clipStack = new Stack<RRect>();
+        protected readonly Stack<RRect> _clipStack = new ();
 
         /// <summary>
         /// The suspended clips
         /// </summary>
-        private Stack<RRect> _suspendedClips = new Stack<RRect>();
+        private readonly Stack<RRect> _suspendedClips = new();
 
         #endregion
 

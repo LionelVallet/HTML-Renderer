@@ -72,7 +72,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp
         /// <summary>
         /// if the page size is undefined this allow you to set manually the page size
         /// </summary>
-        public XSize ManualPageSize {
+        public XSize ManualPageSize
+        {
             get { return _xsize; }
             set { _xsize = value; }
         }
@@ -158,7 +159,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public static XSize MilimitersToUnits(double width, double height) {
+        public static XSize MilimitersToUnits(double width, double height)
+        {
             return new XSize(width / 25.4 * 72, height / 25.4 * 72);
         }
 
@@ -168,7 +170,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public static XSize InchesToUnits(double width, double height) {
+        public static XSize InchesToUnits(double width, double height)
+        {
             return new XSize(width * 72, height * 72);
         }
     }

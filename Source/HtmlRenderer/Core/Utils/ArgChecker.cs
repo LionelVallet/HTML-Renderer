@@ -90,9 +90,9 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         {
             AssertArgNotNull(arg, argName);
 
-            if (arg is T)
+            if (arg is T t)
             {
-                return (T)arg;
+                return t;
             }
             throw new ArgumentException(string.Format("Given argument isn't of type '{0}'.", typeof(T).Name), argName);
         }

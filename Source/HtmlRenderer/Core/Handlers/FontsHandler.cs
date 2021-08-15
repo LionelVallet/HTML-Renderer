@@ -164,8 +164,10 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
             }
             else
             {
-                _fontsCache[family] = new Dictionary<double, Dictionary<RFontStyle, RFont>>();
-                _fontsCache[family][size] = new Dictionary<RFontStyle, RFont>();
+                _fontsCache[family] = new Dictionary<double, Dictionary<RFontStyle, RFont>>
+                {
+                    [size] = new Dictionary<RFontStyle, RFont>()
+                };
             }
             return font;
         }

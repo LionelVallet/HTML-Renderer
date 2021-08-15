@@ -165,7 +165,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
                 }
                 else if (sb != null)
                 {
-                    sb.Append(stylesheet.Substring(prevIdx));
+                    sb.Append(stylesheet[prevIdx..]);
                 }
             }
 
@@ -317,8 +317,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
 
             if (!string.IsNullOrEmpty(className) && (psedoClass == null || psedoClass == "link" || psedoClass == "hover"))
             {
-                string firstClass;
-                var selectors = ParseCssBlockSelector(className, out firstClass);
+                var selectors = ParseCssBlockSelector(className, out string firstClass);
 
                 var properties = ParseCssBlockProperties(blockSource);
 
@@ -955,8 +954,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// <returns>found border width value or null</returns>
         private string ParseBorderColor(string str, int idx, int length)
         {
-            RColor color;
-            return _valueParser.TryGetColor(str, idx, length, out color) ? str.Substring(idx, length) : null;
+            return _valueParser.TryGetColor(str, idx, length, out _) ? str.Substring(idx, length) : null;
         }
 
         #endregion

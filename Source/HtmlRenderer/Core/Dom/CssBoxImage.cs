@@ -73,7 +73,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             if (_imageLoadHandler == null)
             {
                 _imageLoadHandler = new ImageLoadHandler(HtmlContainer, OnLoadImageComplete);
-                _imageLoadHandler.LoadImage(GetAttribute("src"), HtmlTag != null ? HtmlTag.Attributes : null);
+                _imageLoadHandler.LoadImage(GetAttribute("src"), HtmlTag?.Attributes);
             }
 
             var rect = CommonUtils.GetFirstValueOrDefault(Rectangles);
@@ -144,9 +144,9 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _imageLoadHandler = new ImageLoadHandler(HtmlContainer, OnLoadImageComplete);
 
                     if (this.Content != null && this.Content != CssConstants.Normal)
-                        _imageLoadHandler.LoadImage(this.Content, HtmlTag != null ? HtmlTag.Attributes : null);
+                        _imageLoadHandler.LoadImage(this.Content, HtmlTag?.Attributes);
                     else
-                        _imageLoadHandler.LoadImage(GetAttribute("src"), HtmlTag != null ? HtmlTag.Attributes : null);
+                        _imageLoadHandler.LoadImage(GetAttribute("src"), HtmlTag?.Attributes);
                 }
 
                 MeasureWordSpacing(g);

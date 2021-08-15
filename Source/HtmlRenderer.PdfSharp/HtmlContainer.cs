@@ -162,7 +162,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp
             internal set { _htmlContainerInt.ActualSize = Utils.Convert(value); }
         }
 
-        public XSize PageSize {
+        public XSize PageSize
+        {
             get
             {
                 return new XSize(_htmlContainerInt.PageSize.Width, _htmlContainerInt.PageSize.Height);

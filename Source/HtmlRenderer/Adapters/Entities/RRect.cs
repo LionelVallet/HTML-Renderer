@@ -24,7 +24,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <summary>
         ///     Represents an instance of the <see cref="RRect" /> class with its members uninitialized.
         /// </summary>
-        public static readonly RRect Empty = new RRect();
+        public static readonly RRect Empty = new();
 
         private double _height;
         private double _width;

@@ -156,8 +156,7 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
         public override void DrawRectangle(RBrush brush, double x, double y, double width, double height)
         {
             var xBrush = ((BrushAdapter)brush).Brush;
-            var xTextureBrush = xBrush as XTextureBrush;
-            if (xTextureBrush != null)
+            if (xBrush is XTextureBrush xTextureBrush)
             {
                 xTextureBrush.DrawRectangle(_g, x, y, width, height);
             }

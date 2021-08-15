@@ -42,12 +42,12 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <summary>
         /// cache of brush color to brush instance
         /// </summary>
-        private readonly Dictionary<RColor, RBrush> _brushesCache = new Dictionary<RColor, RBrush>();
+        private readonly Dictionary<RColor, RBrush> _brushesCache = new();
 
         /// <summary>
         /// cache of pen color to pen instance
         /// </summary>
-        private readonly Dictionary<RColor, RPen> _penCache = new Dictionary<RColor, RPen>();
+        private readonly Dictionary<RColor, RPen> _penCache = new();
 
         /// <summary>
         /// cache of all the font used not to create same font again and again
@@ -106,8 +106,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <returns>pen instance</returns>
         public RPen GetPen(RColor color)
         {
-            RPen pen;
-            if (!_penCache.TryGetValue(color, out pen))
+            if (!_penCache.TryGetValue(color, out RPen pen))
             {
                 _penCache[color] = pen = CreatePen(color);
             }
@@ -121,8 +120,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <returns>brush instance</returns>
         public RBrush GetSolidBrush(RColor color)
         {
-            RBrush brush;
-            if (!_brushesCache.TryGetValue(color, out brush))
+            if (!_brushesCache.TryGetValue(color, out RBrush brush))
             {
                 _brushesCache[color] = brush = CreateSolidBrush(color);
             }

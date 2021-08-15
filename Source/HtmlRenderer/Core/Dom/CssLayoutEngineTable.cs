@@ -645,8 +645,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     cell.PerformLayout(g); //That will automatically set the bottom of the cell
 
                     //Alter max bottom only if row is cell's row + cell's rowspan - 1
-                    CssSpacingBox sb = cell as CssSpacingBox;
-                    if (sb != null)
+                    if (cell is CssSpacingBox sb)
                     {
                         if (sb.EndRow == currentrow)
                         {

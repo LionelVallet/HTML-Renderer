@@ -606,7 +606,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         public string GetLinkAt(RPoint location)
         {
             var link = DomUtils.GetLinkBox(_root, OffsetByScroll(location));
-            return link != null ? link.HrefLink : null;
+            return link?.HrefLink;
         }
 
         /// <summary>
@@ -651,9 +651,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
                 if (!_loadComplete)
                 {
                     _loadComplete = true;
-                    EventHandler handler = LoadComplete;
-                    if (handler != null)
-                        handler(this, EventArgs.Empty);
+                    LoadComplete?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -861,9 +859,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         {
             try
             {
-                EventHandler<HtmlStylesheetLoadEventArgs> handler = StylesheetLoad;
-                if (handler != null)
-                    handler(this, args);
+                StylesheetLoad?.Invoke(this, args);
             }
             catch (Exception ex)
             {
@@ -879,9 +875,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         {
             try
             {
-                EventHandler<HtmlImageLoadEventArgs> handler = ImageLoad;
-                if (handler != null)
-                    handler(this, args);
+                ImageLoad?.Invoke(this, args);
             }
             catch (Exception ex)
             {
@@ -897,9 +891,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         {
             try
             {
-                EventHandler<HtmlRefreshEventArgs> handler = Refresh;
-                if (handler != null)
-                    handler(this, new HtmlRefreshEventArgs(layout));
+                Refresh?.Invoke(this, new HtmlRefreshEventArgs(layout));
             }
             catch (Exception ex)
             {
@@ -917,9 +909,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         {
             try
             {
-                EventHandler<HtmlRenderErrorEventArgs> handler = RenderError;
-                if (handler != null)
-                    handler(this, new HtmlRenderErrorEventArgs(type, message, exception));
+                RenderError?.Invoke(this, new HtmlRenderErrorEventArgs(type, message, exception));
             }
             catch
             { }
@@ -956,7 +946,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
                     EventHandler<HtmlScrollEventArgs> scrollHandler = ScrollChange;
                     if (scrollHandler != null)
                     {
-                        var rect = GetElementRectangle(link.HrefLink.Substring(1));
+                        var rect = GetElementRectangle(link.HrefLink[1..]);
                         if (rect.HasValue)
                         {
                             scrollHandler(this, new HtmlScrollEventArgs(rect.Value.Location));

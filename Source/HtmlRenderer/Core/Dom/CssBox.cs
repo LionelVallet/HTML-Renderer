@@ -104,7 +104,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         public HtmlContainerInt HtmlContainer
         {
-            get { return _htmlContainer ?? (_htmlContainer = _parentBox != null ? _parentBox.HtmlContainer : null); }
+            get { return _htmlContainer ??= _parentBox?.HtmlContainer; }
             set { _htmlContainer = value; }
         }
 
@@ -141,7 +141,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         public bool IsBrElement
         {
-            get {
+            get
+            {
                 return _htmltag != null && _htmltag.Name.Equals("br", StringComparison.InvariantCultureIgnoreCase);
             }
         }
@@ -714,7 +715,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                 if (BackgroundImage != CssConstants.None && _imageLoadHandler == null)
                 {
                     _imageLoadHandler = new ImageLoadHandler(HtmlContainer, OnImageLoadComplete);
-                    _imageLoadHandler.LoadImage(BackgroundImage, HtmlTag != null ? HtmlTag.Attributes : null);
+                    _imageLoadHandler.LoadImage(BackgroundImage, HtmlTag?.Attributes);
                 }
 
                 MeasureWordSpacing(g);
@@ -1168,10 +1169,10 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             double margin = 0;
             if (ParentBox != null && ParentBox.Boxes.IndexOf(this) == ParentBox.Boxes.Count - 1 && _parentBox.ActualMarginBottom < 0.1)
             {
-                var lastChildBottomMargin = _boxes[_boxes.Count - 1].ActualMarginBottom;
+                var lastChildBottomMargin = _boxes[^1].ActualMarginBottom;
                 margin = Height == "auto" ? Math.Max(ActualMarginBottom, lastChildBottomMargin) : lastChildBottomMargin;
             }
-            return Math.Max(ActualBottom, _boxes[_boxes.Count - 1].ActualBottom + margin + ActualPaddingBottom + ActualBorderBottomWidth);
+            return Math.Max(ActualBottom, _boxes[^1].ActualBottom + margin + ActualPaddingBottom + ActualBorderBottomWidth);
         }
 
         /// <summary>
