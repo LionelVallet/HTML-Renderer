@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>PDF document generator from HTML snippet, 100% managed (C#), High performance library using PdfSharp.</Description>
-    <Version>1.5.1</Version>
+    <Version>1.5.1.1</Version>
     <PackageId>HtmlRenderer.Core.NetStandard2</PackageId>
     <Company>TheArtOfDev</Company>
     <Product>HtmlRenderer.Core</Product>
