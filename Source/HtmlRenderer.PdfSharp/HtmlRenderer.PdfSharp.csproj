@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net7.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>HtmlRenderer.PdfSharp.NetStandard2</PackageId>
-    <Version>1.5.1.1</Version>
+    <Version>1.5.1.2</Version>
     <Authors>Arthur Teplitzki, Lionel Vallet</Authors>
     <Company>TheArtOfDev</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -29,8 +29,8 @@ Features and Benefits:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PDFSharp.NetStandard2" Version="1.51.5185.1" />
-    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="PDFSharp.NetStandard2" Version="1.51.5185.2" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
